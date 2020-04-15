@@ -1,0 +1,11 @@
+Fonts: Press Start 2P / OFL
+https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+
+Music: NES Shooter Music / CC0
+https://opengameart.org/content/nes-shooter-music-5-tracks-3-jingles
+
+Sounds: 8-Bit Sound Effect Pack (Vol. 001) / CC0
+https://opengameart.org/content/8-bit-sound-effect-pack-vol-001
+
+Sprites: Pixel platformer tile set / CC0
+https://opengameart.org/content/pixel-platformer-tile-set
