@@ -11,7 +11,7 @@ This project was maded on Unity 2019.3.5
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/SnowKrown/2D-Platformer/tags). 
 
 ## Authors
-* **SnowKrown** - *Initial work* - [SnowKrown](https://github.com/SnowKrown)
+* **Cristian Montenegro** - *Initial work* - [SnowKrown](https://github.com/SnowKrown)
 
 See also the list of [contributors](https://github.com/SnowKrown/2D-Platformer/contributors) who participated in this project.
 
