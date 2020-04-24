@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using CommandTerminal;
 
 public class TimeScaler : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class TimeScaler : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        Terminal.Shell.AddCommand("timescaler_to", CmdTimeScaler, 2, 4, "Set the timescale. Args: To(Float), Duration(Float), Reset(Bool), Ease:(Int)");
+        Terminal.Shell.AddCommand("timescaler_reset", CmdTimeScaler, 0, 0, "Reset the timescale.");
     }
 
     public void ScaleTo(float to, float duration, bool resetAfterComplete = true, iTween.EaseType ease = iTween.EaseType.easeOutQuad)
@@ -65,5 +68,21 @@ public class TimeScaler : MonoBehaviour
     private void OnApplicationQuit()
     {
         Time.timeScale = 1;
+    }
+
+    private void CmdTimeScaler(CommandArg[] args)
+    {
+        if (Terminal.IssuedError) return;
+        float to = args[0].Float;
+        float duration = args[1].Float;
+        bool reset = args.Length > 2 ? args[2].Bool : true;
+        iTween.EaseType ease = args.Length > 3 ? (iTween.EaseType)args[3].Int : iTween.EaseType.easeOutQuad;
+        ScaleTo(to, duration, reset, ease);
+    }
+
+    private void CmdTimeReset(CommandArg[] args)
+    {
+        if (Terminal.IssuedError) return;
+        ScaleTo(1, defaultResetTime, false);
     }
 }

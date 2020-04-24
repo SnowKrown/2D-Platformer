@@ -536,6 +536,7 @@ MonoBehaviour:
   ToggleFullHotkey: '#`'
   BufferSize: 512
   ConsoleFont: {fileID: 12800000, guid: 574f4c261572a9447a4a1105a0827b6e, type: 3}
+  ConsoleFontSize: 20
   InputCaret: '>'
   ShowGUIButtons: 0
   RightAlignButtons: 0
@@ -553,12 +554,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105555033}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 228524915}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &228524914
 GameObject:
@@ -589,6 +590,7 @@ Transform:
   m_Children:
   - {fileID: 1110032753}
   - {fileID: 1036836357}
+  - {fileID: 105555035}
   - {fileID: 1610377184}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1377,7 +1379,7 @@ GameObject:
   - component: {fileID: 1036836358}
   - component: {fileID: 1036836359}
   m_Layer: 0
-  m_Name: SlowMo
+  m_Name: TimeScaler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1410,9 +1412,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowMotionClip: {fileID: 8300000, guid: 626209d19af02044785c3dee2c7fdb99, type: 3}
-  fastMotionClip: {fileID: 0}
-  resetFromSlowClip: {fileID: 0}
-  resetFromFastClip: {fileID: 0}
+  fastMotionClip: {fileID: 8300000, guid: e0df28768187b97489bdb11b86566cf5, type: 3}
+  resetFromSlowClip: {fileID: 8300000, guid: e0df28768187b97489bdb11b86566cf5, type: 3}
+  resetFromFastClip: {fileID: 8300000, guid: 626209d19af02044785c3dee2c7fdb99, type: 3}
   defaultResetTime: 0.5
 --- !u!82 &1036836359
 AudioSource:
@@ -2367,7 +2369,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 228524915}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1623220969
 GameObject:

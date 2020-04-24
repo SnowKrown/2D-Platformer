@@ -32,14 +32,15 @@ namespace CommandTerminal
         [SerializeField] int BufferSize           = 512;
 
         [Header("Input")]
-        [SerializeField] Font ConsoleFont;
+        [SerializeField] Font ConsoleFont = default;
+        [SerializeField] int ConsoleFontSize = 18;
         [SerializeField] string InputCaret        = ">";
-        [SerializeField] bool ShowGUIButtons;
-        [SerializeField] bool RightAlignButtons;
+        [SerializeField] bool ShowGUIButtons = default;
+        [SerializeField] bool RightAlignButtons = default;
 
         [Header("Theme")]
         [Range(0, 1)]
-        [SerializeField] float InputContrast;
+        [SerializeField] float InputContrast = default;
 
         [SerializeField] Color BackgroundColor    = Color.black;
         [SerializeField] Color ForegroundColor    = Color.white;
@@ -206,6 +207,7 @@ namespace CommandTerminal
         void SetupLabels() {
             label_style = new GUIStyle();
             label_style.font = ConsoleFont;
+            label_style.fontSize = ConsoleFontSize;
             label_style.normal.textColor = ForegroundColor;
             label_style.wordWrap = true;
         }
@@ -214,6 +216,7 @@ namespace CommandTerminal
             input_style = new GUIStyle();
             input_style.padding = new RectOffset(4, 4, 4, 4);
             input_style.font = ConsoleFont;
+            input_style.fontSize = ConsoleFontSize;
             input_style.fixedHeight = ConsoleFont.fontSize * 1.6f;
             input_style.normal.textColor = InputColor;
 
