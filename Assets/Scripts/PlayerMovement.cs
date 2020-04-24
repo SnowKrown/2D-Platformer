@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using CommandTerminal;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,13 +20,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private int maxJumps = 2;
     [SerializeField]
+    private AudioClip[] jumpClips = default;
+    [SerializeField, Header("SlowMo Jump")]
     private int jumpsToSlowMo = -1;
     [SerializeField, Range(0, 1)]
     private float jumpSlowMoScale = 0.35F;
     [SerializeField]
     private float jumpSlowMoDuration = 0.5F;
-    [SerializeField]
-    private AudioClip[] jumpClips = default;
     [SerializeField, Range(0, .3f), Header("Other Properties")]
     private float movementSmoothing = .05f;
     [SerializeField]
@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     private int currentJumps = 0;
     private float airTime = 0;
     private float nextJump = 0;
+    private float initialGravity = 0;
     public bool IsGrounded => isGrounded;
 
     private void Awake()
@@ -55,6 +56,9 @@ public class PlayerMovement : MonoBehaviour
         timeScaler = FindObjectOfType<TimeScaler>();
         jumpSource = gameObject.AddComponent<AudioSource>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        initialGravity = myRigidbody2D.gravityScale;
+        Terminal.Shell.AddCommand("Player_SetGravity", SetGravity, 1, 1, "Set the player gravity. Args: New gravity (Float).");
+        Terminal.Shell.AddCommand("Player_ResetGravity", ResetGravity, 0, 0, "Reset the player gravity.");
     }
 
     private void FixedUpdate()
@@ -178,5 +182,19 @@ public class PlayerMovement : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    public void SetGravity(CommandArg[] args)
+    {
+        if (Terminal.IssuedError) return;
+
+        float newGravity = args[0].Float;
+        myRigidbody2D.gravityScale = newGravity;
+    }
+
+    private void ResetGravity(CommandArg[] args)
+    {
+        if (Terminal.IssuedError) return;
+        myRigidbody2D.gravityScale = initialGravity;
     }
 }
